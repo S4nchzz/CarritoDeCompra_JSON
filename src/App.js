@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import AddToCart from './CarritoBoton';
 
 function App() {
+  const [articulos, setArticulos] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("articulos.json");
+      const data = await response.json();
+      setArticulos(data);
+    };
+
+    fetchData();
+  }, []);
+
+  const [divs, setDivs] = useState([]);
+
+  useEffect(() => {
+    const newDivs = articulos.map(art => (
+      <AddToCart key={art.id} id={art.id} nombre={art.nombre} descripcion={art.descripcion} precio={art.precio} />
+    ));
+    setDivs(newDivs);
+  }, [articulos]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="Container">
+      {
+        divs
+      }
     </div>
   );
 }
