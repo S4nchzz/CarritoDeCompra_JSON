@@ -1,4 +1,4 @@
-function AddToCart({id, nombre, descripcion, precio}) {
+function AddToCart({id, nombre, descripcion, precio, addFun}) {
     return (
         <div className="card">
             <h3>{nombre}</h3>
@@ -6,7 +6,7 @@ function AddToCart({id, nombre, descripcion, precio}) {
             <strong>{precio}</strong>
             <br/>
             <br/>
-            <button>Añadir al carrito</button>
+            <button onClick={() => addFun(id)}>Añadir al carrito</button>
         </div>
     )
 }
