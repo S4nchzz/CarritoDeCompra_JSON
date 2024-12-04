@@ -20,9 +20,12 @@ function PopUp({ list, clearArticles }) {
 
     return (
         <div className="popUp">
-            <h1>Carrito</h1>
-            {productList}
-            {total}
+            <div>
+                <h1>Carrito</h1>
+                {productList}
+                <strong>{total}</strong>
+            </div>
+            <br/>
             <button onClick={() => clearArticles()}>Clear</button>
         </div>
     )

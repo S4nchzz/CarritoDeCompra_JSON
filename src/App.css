@@ -32,4 +32,8 @@
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
+  display: flex;
+  justify-self: right;
+  margin-top: 3%;
+  margin-right: 3%;
 }
